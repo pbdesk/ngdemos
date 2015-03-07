@@ -10,7 +10,7 @@
 
     //routes
     app.config(['$routeProvider', function ($routeProvider) {
-        var viewPath = 'ngApp/contacts/views/';
+        var viewPath = 'ngApp/Contacts/views/';
         $routeProvider
             .when('/', {
                 controller: 'ListController',
