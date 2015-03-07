@@ -60,7 +60,7 @@
 
         $mdBottomSheet.show({
           parent: angular.element(document.getElementById('content')),
-          templateUrl: '/ngdemos/app/users/view/contactSheet.html',
+          templateUrl: './app/users/view/contactSheet.html',
           controller: [ '$mdBottomSheet', UserSheetController],
           controllerAs: "vm",
           bindToController : true,
