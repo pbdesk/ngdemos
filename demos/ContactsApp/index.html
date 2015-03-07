@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactsApp | A Simple SPA Demo App - from the desk of Pinal Bhatt</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/ripples.css" rel="stylesheet" />
+    <link href="css/material-wfont.css" rel="stylesheet" />
+    <link href="css/Site.css" rel="stylesheet" />
+  
+
+</head>
+<body>
+    <div class="header-panel shadow-z-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h1>ContactsApp</h1>
+                </div>
+                <div class="col-xs-5">
+                    &nbsp;
+                </div>
+                <div class="col-xs-4 pull-right">
+                    <h1 style="top:0 !important;">from the desk of Pinal Bhatt</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid main">
+        <div class="row">
+            <nav class="col-xs-2 menu">
+
+
+            </nav>
+            <div class="pages col-xs-10" style="overflow:visible">
+                <div class="col-xs-10">
+
+
+                    <div class="well page active" ng-app="PBDesk.Contacts">
+                        <div>
+                            <h1>My Contacts</h1>
+                        </div>
+                        <ng-view></ng-view>
+                    </div>
+
+
+                    <footer>
+                        <hr />
+                        <p>ContactsApp | A Simple SPA Demo App</p>
+                    </footer>
+                </div>
+                <div class="col-xs-2">
+                    <a class="btn btn-fab btn-material-teal" id="opensource2" href="/"><i class="mdi-action-home" style="color:white"></i></a>
+                    <a class="btn btn-fab btn-material-teal" id="opensource" target="_blank" href="http://www.PBDesk.com" title="My Website: PBDesk.com"><i class="mdi-action-open-in-new" style="color:white"></i></a>
+                    <button class="btn btn-fab btn-material-teal" id="opensource1"><i class="mdi-social-mood" style="color:white"></i></button>
+                    <!--@*http://materializecss.com/icons.html
+                    http://fezvrasta.github.io/bootstrap-material-design/bootstrap-elements.html
+                    http://fezvrasta.github.io/bootstrap-material-design
+                    http://fezvrasta.github.com/bootstrap-material-design/bootstrap-elements.html
+                        data-toggle="modal" data-target="#simple-dialog"
+
+                    *@-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="source-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Source Code</h4>
+                </div>
+                <div class="modal-body">
+                    <pre></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="source-modal1" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">About This App</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This is a simple app to doemonstrate SPA (Single Page Application) using AngularJS. It shows simple CRUD operations on Contact Records.</p>
+                    <pre>Source Code for this can be found at <a href="#">Github</a></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="js/ripples.min.js"></script>
+    <script src="js/material.min.js"></script>
+    <script>
+        //window.page = window.location.hash || "#about";
+
+        //$(document).ready(function () {
+        //    if (window.page != "#about") {
+        //        $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+        //    }
+        //});
+
+        //$(window).on("resize", function () {
+        //    $("html, body").height($(window).height());
+        //    $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight());
+        //    $(".pages").height($(window).height());
+        //}).trigger("resize");
+
+        //$(".menu li").click(function () {
+        //    // Menu
+        //    if (!$(this).data("target")) return;
+        //    if ($(this).is(".active")) return;
+        //    $(".menu li").not($(this)).removeClass("active");
+        //    $(".page").not(page).removeClass("active").hide();
+        //    window.page = $(this).data("target");
+        //    var page = $(window.page);
+        //    window.location.hash = window.page;
+        //    $(this).addClass("active");
+
+
+        //    page.show();
+
+        //    var totop = setInterval(function () {
+        //        $(".pages").animate({ scrollTop: 0 }, 0);
+        //    }, 1);
+
+        //    setTimeout(function () {
+        //        page.addClass("active");
+        //        setTimeout(function () {
+        //            clearInterval(totop);
+        //        }, 1000);
+        //    }, 100);
+        //});
+
+        function cleanSource(html) {
+            var lines = html.split(/\n/);
+
+            lines.shift();
+            lines.splice(-1, 1);
+
+            var indentSize = lines[0].length - lines[0].trim().length,
+                re = new RegExp(" {" + indentSize + "}");
+
+            lines = lines.map(function (line) {
+                if (line.match(re)) {
+                    line = line.substring(indentSize);
+                }
+
+                return line;
+            });
+
+            lines = lines.join("\n");
+
+            return lines;
+        }
+
+        $("#opensource").click(function () {
+            $.get(window.location.href, function (data) {
+                var html = $(data).find(window.page).html();
+                html = cleanSource(html);
+                $("#source-modal pre").text(html);
+                $("#source-modal").modal();
+            });
+        });
+
+        $("#opensource1").click(function () {
+            $("#source-modal1").modal();
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.material.init();
+        });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular-route.min.js"></script>
+    <script src="ngApp/blocks/logger/logger.module.js"></script>
+    <script src="ngApp/blocks/logger/logger.js"></script>
+    <script src="ngApp/blocks/exception/exception.module.js"></script>
+    <script src="ngApp/blocks/exception/exception.js"></script>
+    <script src="ngApp/blocks/exception/exception-handler.provider.js"></script>
+
+
+    <script src="ngApp/Contacts/PBDesk.Contacts.module.js"></script>
+    <script src="ngApp/Contacts/PBDesk.Contacts.CRUDFactory.js"></script>
+    <script src="ngApp/Contacts/PBDesk.Contacts.ListController.js"></script>
+    <script src="ngApp/Contacts/PBDesk.Contacts.CreateController.js"></script>
+    <script src="ngApp/Contacts/PBDesk.Contacts.EditController.js"></script>
+
+
+</body>
+</html>

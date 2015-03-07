@@ -19,7 +19,7 @@
       <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
         <md-icon md-svg-icon="menu" ></md-icon>
       </md-button>
-      <h1>Angular Material - Starter App</h1>
+      <h1>ngDemos | PBDesk</h1>
     </md-toolbar>
 
     <div flex layout="row">
@@ -39,7 +39,14 @@
           <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
           <h2>{{ul.selected.name}}</h2>
           <p>{{ul.selected.content}}</p>
-
+            <div>
+                <md-button class="md-raised md-primary">Click me</md-button>
+            <md-button class="md-accent">or maybe me</md-button>
+            <md-button class="md-warn">Careful</md-button>
+            <md-button class="md-primary">Click me</md-button>
+            <md-button class="md-primary md-hue-1">Click me</md-button>
+            <md-button class="md-primary md-hue-2">Click me</md-button>
+            </div>
           <md-button class="share" md-no-ink ng-click="ul.share($event)" aria-label="Share">
             <md-icon md-svg-icon="share"></md-icon>
           </md-button>
@@ -72,8 +79,8 @@
                       .icon("phone"      , "./assets/svg/phone.svg"       , 512);
 
                       $mdThemingProvider.theme('default')
-                          .primaryPalette('brown')
-                          .accentPalette('red');
+                          .primaryPalette('blue')
+                          .accentPalette('orange');
 
               });
 
